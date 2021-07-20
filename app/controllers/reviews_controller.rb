@@ -14,8 +14,12 @@ class ReviewsController < ApplicationController
             redirect_to review_path(@review)
         else
             render :new
+        end
     end
-end
+
+    def show
+        @review = Review.find_by_id(params[:id])
+    end
 
     def index
     end
