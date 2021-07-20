@@ -22,11 +22,16 @@ class ReviewsController < ApplicationController
     end
 
     def index
+        if @book = Book.find_by_id(params[:book_id])
+            @reviews = @book.reviews
+        else
+            @reviews = Review.all
+        end
     end
 
     private
 
     def review_params
-        params.require(:review).permit(:book_id, :title, :content, :rating)
+        params.require(:review).permit(:book_id, :rating, :title, :content)
     end
 end
