@@ -5,9 +5,29 @@ class BooksController < ApplicationController
         @book.build_genre 
     end
 
+    def create
+        @book = Book.new(book_params)
+        @book.user_id = session[:user_id]
+        if @book.save
+            redirect_to book_path(@book)
+        else
+            render :new
+        end
+    end
+
+    # def index
+    # end
+
+    def show 
+        @book = Book.find(params[:id])
+    end
+
+    # def edit
+    # end
+
     private
 
     def book_params
-        params.require(:book).permit(:title, :author, :genre_id, :genre_attributes[:name])
+        params.require(:book).permit(:title, :author, :genre_id, genre_attributes: [:name])
     end
 end
