@@ -23,8 +23,16 @@ class BooksController < ApplicationController
         @book = Book.find(params[:id])
     end
 
-    # def edit
-    # end
+    def edit
+    end
+
+    def update
+        if @book.update(book_params)
+            redirect_to book_path(@book)
+        else
+            render :edit
+        end
+    end
 
     private
 
