@@ -10,9 +10,7 @@ class Book < ApplicationRecord
   validates :author, presence: true
 
 
-  def self.alpha
-    order(:title)
-  end
+  scope :alpha -> {order(:name)}
   
   def genre_attributes=(attributes)
     self.genre = Genre.find_or_create_by(attributes) if !attributes['name'].empty?
