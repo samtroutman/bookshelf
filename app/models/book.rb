@@ -7,7 +7,7 @@ class Book < ApplicationRecord
 
   validates :title, presence: true
   validates :author, presence: true
-
+  validates :book, uniqueness {scope: :user, message: "You have already reviewed this book"}
 
   def self.alpha
     order(:title)
