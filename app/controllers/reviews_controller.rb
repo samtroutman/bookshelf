@@ -1,6 +1,6 @@
 class ReviewsController < ApplicationController
 
-    before_action :set_review, only: [:show, :edit, :update, :destroy]
+    before_action :set_review, only: [:show, :destroy]
 
 
     def new
@@ -29,18 +29,6 @@ class ReviewsController < ApplicationController
             @reviews = @book.reviews
         else
             @reviews = Review.all
-        end
-    end
-
-    def edit
-    end
-
-    def update 
-        @review.update(review_params)
-        if @review.save
-            redirect_to review_path
-        else
-            render :edit
         end
     end
 
