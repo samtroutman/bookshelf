@@ -1,5 +1,6 @@
 class BooksController < ApplicationController
     before_action :redirect_if_not_logged_in
+    
     def new
         @book = Book.new
         @book.build_genre 
