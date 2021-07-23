@@ -1,7 +1,7 @@
 class ReviewsController < ApplicationController
 
     before_action :set_review, only: [:show, :destroy]
-
+    before_action :redirect_if_not_logged_in
 
     def new
         if @book = Book.find_by_id(params[:book_id])
