@@ -1,5 +1,8 @@
 class ReviewsController < ApplicationController
 
+    before_action :set_review, only: [:show, :edit, :update, :destroy]
+
+
     def new
         if @book = Book.find_by_id(params[:book_id])
             @review = @book.reviews.build
@@ -33,8 +36,9 @@ class ReviewsController < ApplicationController
     end
 
     def update 
-        if @review.update(review_params)
-            redirect_to book_path(@book)
+        @review.update(review_params)
+        if @review.save
+            redirect_to review_path
         else
             render :edit
         end
@@ -42,7 +46,7 @@ class ReviewsController < ApplicationController
 
     def destroy
         @review.destroy
-        redirect_to book_path(@book)
+        redirect_to review_path
     end
 
     private
@@ -50,4 +54,9 @@ class ReviewsController < ApplicationController
     def review_params
         params.require(:review).permit(:book_id, :rating, :title, :content)
     end
+
+    def set_review
+        @review = Review.find(params[:id])
+    end
+        
 end
