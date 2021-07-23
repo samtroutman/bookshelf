@@ -8,6 +8,7 @@ class Book < ApplicationRecord
   validates :title, presence: true, uniqueness: true 
   validates :author, presence: true
 
+  scope :order_by_rating, -> {left_joins(:reviews).group(:id).order('avg(rating) desc')}
 
 
   def self.alpha
