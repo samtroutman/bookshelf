@@ -25,7 +25,7 @@ class BooksController < ApplicationController
     end
 
     def highest_ranked
-        @books = Book.highest_ranked
+        @books = Book.order_by_rating
     end
 
     private
