@@ -1,6 +1,6 @@
 class BooksController < ApplicationController
     before_action :redirect_if_not_logged_in
-    
+
     def new
         @book = Book.new
         @book.build_genre 
@@ -22,6 +22,10 @@ class BooksController < ApplicationController
 
     def show 
         @book = Book.find(params[:id])
+    end
+
+    def highest_ranked
+        @books = Book.highest_ranked
     end
 
     private
