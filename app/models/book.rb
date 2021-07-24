@@ -13,6 +13,10 @@ class Book < ApplicationRecord
   def self.alpha
     order(:title)
   end
+
+  def average
+    self.reviews.average(:rating).to_f.round(2)
+  end
   
   def genre_attributes=(attributes)
     self.genre = Genre.find_or_create_by(attributes) if !attributes['name'].empty?
