@@ -3,7 +3,6 @@
 This is a simple CRUD/MVC app built with Ruby and the Rails framework that will allow a user to add books, review books, and review books other users have added. 
 
 Users have the ability to: 
-Users have the ability to:
 <br><br>
   -Create a new account<br><br>
   -Create and save books <br><br>
