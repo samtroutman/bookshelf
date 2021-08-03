@@ -1,0 +1,5 @@
+<h1>Highest Ranked Books on Bookshelf</h1>
+
+<% @books.each do |b| %>
+    <h2><%= link_to b.title, book_path(b.id)%> by <%= b.author %> - Average Rating: <%= b.average %> Stars </h2>
+<% end %>

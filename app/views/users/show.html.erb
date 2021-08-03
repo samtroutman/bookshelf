@@ -1,0 +1,17 @@
+<% if @user == current_user %> 
+<h1>Welcome <%= @user.username %></h1>
+<h2>Your Books:</h2>
+<% else %>
+  <h2><%= @user.username%>'s Books Reviewed: </h2>
+<% end %>
+
+
+<% @user.reviews.each do |r| %>
+  <ul>
+    <%= link_to r.book.title, book_path(r.book) %> - 
+    <%= link_to r.rating, review_path(r) %> Stars 
+  </ul>
+<% end %>
+
+
+

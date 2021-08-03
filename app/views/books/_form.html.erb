@@ -1,0 +1,31 @@
+<%= render partial: 'layouts/errors', locals: {object: @book}  %>
+
+<%= form_for(@book) do |f| %>
+
+    <div>
+    <%= f.label :title %>
+    <%= f.text_field :title %>
+    </div>
+
+    <div>
+    <%= f.label :author %>
+    <%= f.text_field :author %>
+    </div>
+
+    <p>Select an already existing genre:</p>
+    <div>
+    <%= f.collection_select :genre_id, Genre.all, :id, :name, include_blank: 'Select a Genre'  %>
+    </div>
+
+
+    <p> Add a new genre: </p>
+    <div>
+    <%=f.fields_for :genre do |g| %>
+      <%= g.label :name %>
+      <%= g.text_field :name %>
+    <% end %>
+    </div>
+    <br>
+
+    <%= f.submit "Add" %>
+<% end %>
