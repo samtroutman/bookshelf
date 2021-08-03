@@ -64,7 +64,7 @@ class ReviewsController < ApplicationController
     end
 
     def user_allowed
-        if current_user != @review.user_id
+        if current_user != @review.user
             redirect_to books_path
         end
     end
