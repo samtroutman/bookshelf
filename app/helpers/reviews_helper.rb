@@ -6,4 +6,5 @@ module ReviewsHelper
             hidden_field_tag "review[book_id]", review.book_id
         end
     end
+
 end

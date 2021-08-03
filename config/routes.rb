@@ -11,7 +11,7 @@ Rails.application.routes.draw do
   get '/books/highest_ranked' => 'books#highest_ranked'
 
 
-  resources :reviews, except: [:index]
+  resources :reviews, except: :index
   resources :genres
 
   resources :books do 
