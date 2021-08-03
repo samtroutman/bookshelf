@@ -9,6 +9,8 @@ class Book < ApplicationRecord
 
   scope :order_by_rating, -> {left_joins(:reviews).group(:id).order('avg(rating) desc')}
 
+  scope :order_by_reviews, -> {left_joins(:reviews).group(:book_id).order('count(reviews.id) desc').limit(1)}
+
 
   def self.alpha
     order(:title)
